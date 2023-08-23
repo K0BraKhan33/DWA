@@ -32,12 +32,13 @@ form.addEventListener("submit", (event) => {
   
   if (isNaN(dividend) || isNaN(divider)) {
     document.body.innerHTML = "Something critical went wrong. Please reload the page.";
-    console.error("Invalid input provided.");
+    throw new Error('Invalid input provided.');
     return;
   }
   
   if (divider === "0") {
     result.innerText = "Division not performed. Division by zero is not allowed.";
+    throw new Error('')
     return;
   }
   
@@ -45,7 +46,6 @@ form.addEventListener("submit", (event) => {
     result.innerText = "Division not performed. Both values should be whole numbers.";
     return;
   }
-  
   try {
     const quotient = dividend / divider;
     if (!Number.isNaN(quotient) && Number.isInteger(quotient)) {
