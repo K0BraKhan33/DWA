@@ -51,12 +51,15 @@ form.addEventListener("submit", (event) => {
     const quotient = dividend / divider;
     if (!Number.isNaN(quotient) && Number.isInteger(quotient)) {
       result.innerText = quotient;
-    } else {
+    } 
+    else {
       result.innerText = "Division not performed. Result is not a whole number.";
       throw new Error('Result is not a whole number.')
     }
-  } catch (error) {
-    console.error(error);
+     } 
 
+catch (error) {
+    console.error(error);
   }
+  
 });
