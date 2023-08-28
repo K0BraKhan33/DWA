@@ -16,7 +16,6 @@ const createBookElement = ({ id, title, author, image }) => {
             <div class="preview__author">${authors[author]}</div>
         </div>
     `;
- 
     return bookElement;
 };
 
@@ -174,9 +173,8 @@ document.querySelector('[data-search-form]').addEventListener('submit', (event) 
 document.querySelector('[data-list-button]').addEventListener('click', () => {
     const fragment = document.createDocumentFragment();
 //here
-    for (const { author, id, image, title } of matches.slice(page * BOOKS_PER_PAGE, (page + 1) * BOOKS_PER_PAGE)) {
-        createBookElement(author, id, image, title)
-
+for (const book of filteredBooks.slice(0, BOOKS_PER_PAGE)) {
+    const bookElement = createBookElement(book);
         fragment.appendChild(bookElement);
     }
 
