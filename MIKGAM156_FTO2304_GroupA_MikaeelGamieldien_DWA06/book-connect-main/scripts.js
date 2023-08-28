@@ -16,7 +16,7 @@ const createBookElement = ({ id, title, author, image }) => {
             <div class="preview__author">${authors[author]}</div>
         </div>
     `;
-
+ 
     return bookElement;
 };
 
