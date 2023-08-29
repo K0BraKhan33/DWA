@@ -2,7 +2,6 @@ import { books, authors, genres, BOOKS_PER_PAGE, } from './data.js';
 import { createBookElement, themes} from './book.js';
 
 // Initialize page variables
-const currentPage = 1;
 let page = 1;
 let matches = books;
 let filteredBooks = books;

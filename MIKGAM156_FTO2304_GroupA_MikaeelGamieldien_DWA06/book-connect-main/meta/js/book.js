@@ -1,6 +1,16 @@
 // books.js
 import { books, authors, genres, BOOKS_PER_PAGE } from './data.js';
 
+/**
+ * 
+ * @param {Object} data - The data containing book information.
+ * @param {string} data.id - The ID of the book.
+ * @param {string} data.title - The title of the book.
+ * @param {string} data.author - The author of the book.
+ * @param {string} data.image - The image URL of the book.
+ * @returns {HTMLElement} - The created book element.
+ */
+
 // Create a book element using the provided data
 function createBookElement({ id, title, author, image }) {
     const bookElement = document.createElement('button');
@@ -18,7 +28,10 @@ function createBookElement({ id, title, author, image }) {
   
   // Export the createBookElement function
 
-
+/**
+ * 
+ * @param {string} LiDa 
+ */
 
 function themes(LiDa){
   if (LiDa === 'night') {
