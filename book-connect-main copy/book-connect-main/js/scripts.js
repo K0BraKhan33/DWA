@@ -1,32 +1,31 @@
+// Fully working scripts.js file
 
-import { books, authors, genres, BOOKS_PER_PAGE } from './data.js';
+import { books, authors, genres, BOOKS_PER_PAGE } from './data.js'
 
-let currentPage = 1;
-let filteredBooks = books;
+let page = 1;
+let matches = books
 
-const createBookElement = ({ id, title, author, image }) => {
-    const bookElement = document.createElement('button');
-    bookElement.classList = 'preview';
-    bookElement.setAttribute('data-preview', id);
-    bookElement.innerHTML = `
-        <img class="preview__image" src="${image}" />
+const starting = document.createDocumentFragment()
+
+for (const { author, id, image, title } of matches.slice(0, BOOKS_PER_PAGE)) {
+    const element = document.createElement('button')
+    element.classList = 'preview'
+    element.setAttribute('data-preview', id)
+
+    element.innerHTML = `
+        <img
+            class="preview__image"
+            src="${image}"
+        />
+        
         <div class="preview__info">
             <h3 class="preview__title">${title}</h3>
             <div class="preview__author">${authors[author]}</div>
         </div>
-    `;
- 
-    return bookElement;
-};
+    `
 
-const startingFragment = document.createDocumentFragment();
-
-for (const book of filteredBooks.slice(0, BOOKS_PER_PAGE)) {
-    const bookElement = createBookElement(book);
-    startingFragment.appendChild(bookElement);
+    starting.appendChild(element)
 }
-
-document.querySelector('[data-list-items]').appendChild(startingFragment);
 
 document.querySelector('[data-list-items]').appendChild(starting)
 
@@ -60,15 +59,6 @@ for (const [id, name] of Object.entries(authors)) {
 
 document.querySelector('[data-search-authors]').appendChild(authorsHtml)
 
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.querySelector('[data-settings-theme]').value = 'night'
-    document.documentElement.style.setProperty('--color-dark', '255, 255, 255');
-    document.documentElement.style.setProperty('--color-light', '10, 10, 20');
-} else {
-    document.querySelector('[data-settings-theme]').value = 'day'
-    document.documentElement.style.setProperty('--color-dark', '10, 10, 20');
-    document.documentElement.style.setProperty('--color-light', '255, 255, 255');
-}
 
 document.querySelector('[data-list-button]').innerText = `Show more (${books.length - BOOKS_PER_PAGE})`
 document.querySelector('[data-list-button]').disabled = (matches.length - (page * BOOKS_PER_PAGE)) > 0
@@ -93,26 +83,6 @@ document.querySelector('[data-header-search]').addEventListener('click', () => {
 
 document.querySelector('[data-header-settings]').addEventListener('click', () => {
     document.querySelector('[data-settings-overlay]').open = true 
-})
-
-document.querySelector('[data-list-close]').addEventListener('click', () => {
-    document.querySelector('[data-list-active]').open = false
-})
-
-document.querySelector('[data-settings-form]').addEventListener('submit', (event) => {
-    event.preventDefault()
-    const formData = new FormData(event.target)
-    const { theme } = Object.fromEntries(formData)
-
-    if (theme === 'night') {
-        document.documentElement.style.setProperty('--color-dark', '255, 255, 255');
-        document.documentElement.style.setProperty('--color-light', '10, 10, 20');
-    } else {
-        document.documentElement.style.setProperty('--color-dark', '10, 10, 20');
-        document.documentElement.style.setProperty('--color-light', '255, 255, 255');
-    }
-    
-    document.querySelector('[data-settings-overlay]').open = false
 })
 
 document.querySelector('[data-search-form]').addEventListener('submit', (event) => {
