@@ -47,7 +47,8 @@ genreHtml.appendChild(firstGenreElement)
 ========
     `;
     return bookElement;
-};
+}; 
+
 
 const startingFragment = document.createDocumentFragment();
 //here
