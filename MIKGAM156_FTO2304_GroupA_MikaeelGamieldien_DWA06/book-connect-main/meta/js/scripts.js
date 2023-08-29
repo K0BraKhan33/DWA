@@ -1,32 +1,23 @@
-import { books, authors, genres, BOOKS_PER_PAGE } from './data.js';
+import { books, authors, genres, BOOKS_PER_PAGE, } from './data.js';
+import { createBookElement, themes} from './book.js';
 
+// Initialize page variables
 const currentPage = 1;
-let page = 1; 
+let page = 1;
 let matches = books;
 let filteredBooks = books;
-
-const createBookElement = ({ id, title, author, image }) => {
-    const bookElement = document.createElement('button');
-    bookElement.classList = 'preview';
-    bookElement.setAttribute('data-preview', id);
-    bookElement.innerHTML = `
-        <img class="preview__image" src="${image}" />
-        <div class="preview__info">
-            <h3 class="preview__title">${title}</h3>
-            <div class="preview__author">${authors[author]}</div>
-        </div>
-    `;
-    return bookElement;
-};
-
+// Create a starting fragment for book elements
 const startingFragment = document.createDocumentFragment();
-//here
-for (const book of filteredBooks.slice(0, BOOKS_PER_PAGE)) {
+
+// Loop through the first page of matches and create book elements
+for (const book of matches.slice(0, BOOKS_PER_PAGE)) {
     const bookElement = createBookElement(book);
     startingFragment.appendChild(bookElement);
 }
 
+// Append the startingFragment to the appropriate element in your HTML
 document.querySelector('[data-list-items]').appendChild(startingFragment);
+
 
 // Create genre dropdown options
 const genreHtml = document.createDocumentFragment();
@@ -63,12 +54,12 @@ document.querySelector('[data-search-authors]').appendChild(authorsHtml);
 // Set theme based on user preference
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.querySelector('[data-settings-theme]').value = 'night';
-    document.documentElement.style.setProperty('--color-dark', '255, 255, 255');
-    document.documentElement.style.setProperty('--color-light', '10, 10, 20');
+    themes('night')
+
 } else {
+    themes('day')
     document.querySelector('[data-settings-theme]').value = 'day';
-    document.documentElement.style.setProperty('--color-dark', '10, 10, 20');
-    document.documentElement.style.setProperty('--color-light', '255, 255, 255');
+
 }
 
 document.querySelector('[data-list-button]').innerText = `Show more (${books.length - BOOKS_PER_PAGE})`;
@@ -104,15 +95,7 @@ document.querySelector('[data-settings-form]').addEventListener('submit', (event
     event.preventDefault();
     const formData = new FormData(event.target);
     const { theme } = Object.fromEntries(formData);
-
-    if (theme === 'night') {
-        document.documentElement.style.setProperty('--color-dark', '255, 255, 255');
-        document.documentElement.style.setProperty('--color-light', '10, 10, 20');
-    } else {
-        document.documentElement.style.setProperty('--color-dark', '10, 10, 20');
-        document.documentElement.style.setProperty('--color-light', '255, 255, 255');
-    }
-
+    themes(theme);
     document.querySelector('[data-settings-overlay]').open = false;
 });
 
@@ -152,7 +135,7 @@ document.querySelector('[data-search-form]').addEventListener('submit', (event) 
 
     document.querySelector('[data-list-items]').innerHTML = '';
     const newItems = document.createDocumentFragment();
-//here
+    //here
     for (const { author, id, image, title } of result.slice(0, BOOKS_PER_PAGE)) {
         createBookElement(author, id, image, title)
         newItems.appendChild(BookElement);
@@ -166,15 +149,15 @@ document.querySelector('[data-search-form]').addEventListener('submit', (event) 
         <span class="list__remaining"> (${(matches.length - (page * BOOKS_PER_PAGE)) > 0 ? (matches.length - (page * BOOKS_PER_PAGE)) : 0})</span>
     `;
 
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     document.querySelector('[data-search-overlay]').open = false;
 });
 
 document.querySelector('[data-list-button]').addEventListener('click', () => {
     const fragment = document.createDocumentFragment();
-//here
-for (const book of filteredBooks.slice(0, BOOKS_PER_PAGE)) {
-    const bookElement = createBookElement(book);
+    //here
+    for (const book of filteredBooks.slice(0, BOOKS_PER_PAGE)) {
+        const bookElement = createBookElement(book);
         fragment.appendChild(bookElement);
     }
 
