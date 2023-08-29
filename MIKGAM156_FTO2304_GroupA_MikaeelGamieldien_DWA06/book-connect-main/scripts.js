@@ -17,7 +17,8 @@ const createBookElement = ({ id, title, author, image }) => {
         </div>
     `;
     return bookElement;
-};
+}; 
+
 
 const startingFragment = document.createDocumentFragment();
 //here
