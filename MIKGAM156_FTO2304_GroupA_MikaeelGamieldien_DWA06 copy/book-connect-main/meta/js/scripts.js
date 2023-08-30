@@ -1,3 +1,4 @@
+//scripts.js
 import { books, authors, genres, BOOKS_PER_PAGE, } from './data.js';
 import { createBookElement, themes} from './book.js';
 
@@ -136,12 +137,12 @@ document.querySelector('[data-search-form]').addEventListener('submit', (event) 
     document.querySelector('[data-list-items]').innerHTML = '';
     const newItems = document.createDocumentFragment();
     //here
-    for (const { author, id, image, title } of result.slice(0, BOOKS_PER_PAGE)) {
-        createBookElement(author, id, image, title)
-        newItems.appendChild(BookElement);
+    for (const book of result.slice(0, BOOKS_PER_PAGE)) {
+        const bookElement=createBookElement(book);
+        newItems.appendChild(bookElement)
     }
 
-    document.querySelector('[data-list-items]').appendChild(newItems);
+    document.querySelector('[data-list-items]').appendChild(newItems)
     document.querySelector('[data-list-button]').disabled = (matches.length - (page * BOOKS_PER_PAGE)) < 1;
 
     document.querySelector('[data-list-button]').innerHTML = `
@@ -154,14 +155,14 @@ document.querySelector('[data-search-form]').addEventListener('submit', (event) 
 });
 
 document.querySelector('[data-list-button]').addEventListener('click', () => {
-    const fragment = document.createDocumentFragment();
+    const bookfragment = document.createDocumentFragment();
     //here
-    for (const book of filteredBooks.slice(0, BOOKS_PER_PAGE)) {
+    for (const book of matches.slice(page * BOOKS_PER_PAGE, (page + 1) * BOOKS_PER_PAGE)) {
         const bookElement = createBookElement(book);
-        fragment.appendChild(bookElement);
+        bookfragment.appendChild(bookElement);
     }
 
-    document.querySelector('[data-list-items]').appendChild(fragment);
+    document.querySelector('[data-list-items]').appendChild(bookfragment);
     page += 1;
 });
 
