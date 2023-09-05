@@ -1,25 +1,30 @@
-//index2.js
-import { Display } from "./classcall";
+//./js/index2.js
+import { display } from '/MIKGAM156_FTO2304_GroupA_MikaeelGamieldien_DWA10/js/classcall.js';
 
-class DisplayIncreasedText {
+class DisplayDecreasedText {
   constructor() {
-    this.iNumber = 0;
+    this.iNumber=0
+    ;
   }
 
-  increaseNumber() {
-    this.iNumber -= 1;
-    this.sNumber = this.iNumber;
-    return this.sNumber;
-  }
+  decreaseNumber() {
+    this.iNumber = parseFloat(display.textContent.trim(), 10);
+    if (isNaN(this.iNumber)) {
+      this.iNumber = 0;
+    } else {
+      this.iNumber -= 1;
+    }
+    return this.iNumber;
 }
+}
+const displayIncreasedText = new DisplayDecreasedText();
 
-const displayIncreasedText = new DisplayIncreasedText();
-
-const incNumber = () => {
-  const increasedNumber = displayIncreasedText.increaseNumber();
-  Display.textContent = increasedNumber;
+const decrNumber = () => {
+  const decreasedNumber = displayIncreasedText.decreaseNumber();
+  display.textContent = decreasedNumber;
 };
 
-export { incNumber };
+export { decrNumber };
+
 
 
