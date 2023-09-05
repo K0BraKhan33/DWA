@@ -2,7 +2,6 @@ import { books, authors, genres, BOOKS_PER_PAGE, } from './data.js';
 import { createBookElement, themes} from './book.js';
 
 // Initialize page variables
-const currentPage = 1;
 let page = 1;
 let matches = books;
 let filteredBooks = books;
@@ -67,7 +66,7 @@ document.querySelector('[data-list-button]').disabled = (matches.length - (page 
 
 document.querySelector('[data-list-button]').innerHTML = `
     <span>Show more</span>
-    <span class="list__remaining"> (${(matches.length - (page * BOOKS_PER_PAGE)) > 0 ? (matches.length - (page * BOOKS_PER_PAGE)) : 0})</span>
+    <span class="list__remaining"> (${(matches.length - (page * BOOKS_PER_PAGE)) >   0 ? (matches.length - (page * BOOKS_PER_PAGE)) : 0})</span>
 `;
 
 document.querySelector('[data-search-cancel]').addEventListener('click', () => {
@@ -192,4 +191,6 @@ document.querySelector('[data-list-items]').addEventListener('click', (event) =>
         document.querySelector('[data-list-subtitle]').innerText = `${authors[active.author]} (${new Date(active.published).getFullYear()})`;
         document.querySelector('[data-list-description]').innerText = active.description;
     }
+
+ 
 });

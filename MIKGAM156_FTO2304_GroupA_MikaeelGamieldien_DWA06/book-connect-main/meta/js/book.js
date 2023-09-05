@@ -25,7 +25,6 @@ function createBookElement({ id, title, author, image }) {
     `;
     return bookElement;
   }
-  
   // Export the createBookElement function
 
 /**
