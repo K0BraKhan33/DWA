@@ -1,55 +1,29 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-.counter {
-    text-align: center;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 300px; /* Adjust the width as needed */
-}
-
-#display {
-    font-size: 48px;
-    margin-bottom: 20px;
-    border: 2px solid #333; /* Add a border to the h1 element */
-    padding: 10px; /* Add padding for better visibility */
-}
-
-.button-container {
-    display: flex;
-    justify-content: center;
-}
-
-.counter-button {
-    font-size: 24px;
+/* Style for buttons */
+sl-button {
+    display: inline-block;
+    
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #007BFF;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin: 0 5px; /* Adjust the button spacing */
-}
-
-.counter-button:hover {
+    margin-left: 28vw;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  sl-button:hover {
     background-color: #0056b3;
-}
-
-.reset-button {
-    font-size: 18px;
-    padding: 8px 16px;
-    background-color: #dc3545;
-}
-
-.reset-button:hover {
-    background-color: #bb2d3b;
-}
+  }
+  
+  /* Style for the h1 display */
+  h1 {
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+    margin: 20px 0;
+  }
+  
