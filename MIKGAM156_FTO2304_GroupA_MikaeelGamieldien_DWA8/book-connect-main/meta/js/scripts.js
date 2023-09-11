@@ -136,7 +136,7 @@ document.querySelector('[data-search-form]').addEventListener('submit', (event) 
     const newItems = document.createDocumentFragment();
     //here
     for (const { author, id, image, title } of result.slice(0, BOOKS_PER_PAGE)) {
-        createBookElement(author, id, image, title)
+        bookFactory.createBookElement(author, id, image, title)
         newItems.appendChild(BookElement);
     }
 
@@ -145,7 +145,7 @@ document.querySelector('[data-search-form]').addEventListener('submit', (event) 
 
     document.querySelector('[data-list-button]').innerHTML = `
         <span>Show more</span>
-        <span class="list__remaining"> (${(matches.length - (page * BOOKS_PER_PAGE)) > 0 ? (matches.length - (page * BOOKS_PER_PAGE)) : 0})</span>
+        <span class="list__remaining"> (${(matches.length - (page * BOOKS_PER_PAGE)) < 0 ? (matches.length - (page * BOOKS_PER_PAGE)) : 0})</span>
     `;
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -155,8 +155,8 @@ document.querySelector('[data-search-form]').addEventListener('submit', (event) 
 document.querySelector('[data-list-button]').addEventListener('click', () => {
     const fragment = document.createDocumentFragment();
     //here
-    for (const book of filteredBooks.slice(0, BOOKS_PER_PAGE)) {
-        const bookElement = createBookElement(book);
+    for (const book of filteredBooks.slice((0*page), (BOOKS_PER_PAGE*(page+1)))) {
+        const bookElement = bookFactory.createBookElement(book);
         fragment.appendChild(bookElement);
     }
 

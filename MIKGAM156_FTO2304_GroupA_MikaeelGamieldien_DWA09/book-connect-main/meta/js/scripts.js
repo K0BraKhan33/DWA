@@ -1,5 +1,9 @@
 import { books, authors, genres, BOOKS_PER_PAGE, } from './data.js';
 import { bookFactory} from './book.js';
+import  "./componants.js";
+
+
+
 
 // Initialize page variables
 let page = 1;
@@ -192,5 +196,4 @@ document.querySelector('[data-list-items]').addEventListener('click', (event) =>
         document.querySelector('[data-list-description]').innerText = active.description;
     }
 
- 
 });
