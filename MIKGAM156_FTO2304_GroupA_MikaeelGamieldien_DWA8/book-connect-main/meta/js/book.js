@@ -1,11 +1,9 @@
-import { authors, BOOKS_PER_PAGE } from './data.js';
 
-class BookElementCreator {
-  constructor() {
-    this.booksPerPage = BOOKS_PER_PAGE;
-  }
+import { authors } from './data.js';
 
-  createBookElement({ id, title, author, image }) {
+
+function BookElementFactory(){
+  function createBookElement({ id, title, author, image }) {
     const bookElement = document.createElement('button');
     bookElement.classList.add('preview');
     bookElement.setAttribute('data-preview', id);
@@ -21,7 +19,7 @@ class BookElementCreator {
     return bookElement;
   }
 
-  toggleTheme(LiDa) {
+  function toggleTheme(LiDa) {
     const root = document.documentElement;
     if (LiDa === 'night') {
       root.style.setProperty('--color-dark', '255, 255, 255');
@@ -31,10 +29,12 @@ class BookElementCreator {
       root.style.setProperty('--color-light', '255, 255, 255');
     }
   }
+  return {
+    createBookElement,
+    toggleTheme
+  };
 }
 
-const bookElementCreator = new BookElementCreator();
-const createBookElement = bookElementCreator.createBookElement.bind(bookElementCreator);
-const themes = bookElementCreator.toggleTheme.bind(bookElementCreator);
 
-export { createBookElement, themes };
+export const bookFactory = BookElementFactory();
+
