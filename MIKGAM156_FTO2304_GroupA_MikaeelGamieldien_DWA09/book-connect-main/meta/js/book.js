@@ -16,7 +16,7 @@ class BookFactory {
     const preBookElement = document.createElement('pre-book');
 
     // Set the attributes of the preBook custom element
-    preBookElement.setAttribute('pic', image);
+    preBookElement.setAttribute('src', image);
     preBookElement.setAttribute('title', title);
     preBookElement.setAttribute('author', author);
 

@@ -18,7 +18,7 @@ for (const book of matches.slice(0, BOOKS_PER_PAGE)) {
     startingFragment.appendChild(bookElement);
 }
 
-// Append the startingFragment to the appropriate element in your HTML
+// Append the   startingFragment to the appropriate element in your HTML
 document.querySelector('[data-list-items]').appendChild(startingFragment);
 
 

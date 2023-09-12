@@ -60,19 +60,19 @@ template.innerHTML = /*html*/ `
   </style>
   
   <button class="preview">
-  <img class="image" src="${this.#image}" />
+  <img class="image" src="${this.image}" />
   <div class="info">
-    <h3 class="title">${this.#title}</h3>
-    <div class="author">${this.#author}</div>
+    <h3 class="title">${this.title}</h3>
+    <div class="author">${this.author}</div>
   </div>
 </button>
 `;
 
 class PreviewBook extends HTMLElement {
-  #image = this.getAttribute("pic");
-  #title = this.getAttribute("title");
-  #author = this.getAttribute("author");
-  #elements = {
+  image = this.getAttribute("src");
+  title = this.getAttribute("title");
+  author = this.getAttribute("author");
+  elements = {
     images: undefined,
     titles: undefined,
     authors: undefined
@@ -87,15 +87,15 @@ class PreviewBook extends HTMLElement {
   }
 
   connectedCallback() {
-    this.#elements = {
+    this.elements = {
       images: this.shadowRoot.querySelector('[data-images]'),
       titles: this.shadowRoot.querySelector('[data-titles]'),
       authors: this.shadowRoot.querySelector('[data-authors]')
     };
 
-    this.#elements.authors.innerHTML = this.#author;
-    this.#elements.images.setAttribute("src", this.#image); // Set the image source
-    this.#elements.titles.innerHTML = this.#title;
+    this.elements.authors.innerHTML = this.author;
+    this.elements.images.setAttribute("src", this.image); // Set the image source
+    this.elements.titles.innerHTML = this.title;
   }
 }
 
