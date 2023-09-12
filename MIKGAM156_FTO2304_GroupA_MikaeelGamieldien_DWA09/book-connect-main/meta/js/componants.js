@@ -1,3 +1,6 @@
+//components.js
+
+
 const template = document.createElement('template');
 template.innerHTML = /*html*/ `
   <style>
@@ -59,44 +62,79 @@ template.innerHTML = /*html*/ `
   
   </style>
   
+ 
   <button class="preview">
-  <img class="image" src="${this.image}" />
-  <div class="info">
-    <h3 class="title">${this.title}</h3>
-    <div class="author">${this.author}</div>
+  <img class="preview__image" data-images src="{image}"/>
+  <div class="preview__info">
+    <h3 class="preview__title" data-titles>{title}</h3>
+    <div class="preview__author" data-authors><author</div>
   </div>
-</button>
-`;
+</button>`;
 
 class PreviewBook extends HTMLElement {
-  image = this.getAttribute("src");
-  title = this.getAttribute("title");
-  author = this.getAttribute("author");
-  elements = {
-    images: undefined,
-    titles: undefined,
-    authors: undefined
+#image = '';
+#title = '';
+#author = '';
+#elements = {
+  images: undefined,
+  titles: undefined,
+  authors: undefined
+};
+
+#inner = this.attachShadow({ mode: 'open' });
+
+constructor() {
+  super();
+  const { content } = template;
+  this.#inner.appendChild(content.cloneNode(true));
+}
+
+connectedCallback() {
+  this.#elements = {
+    images: this.shadowRoot.querySelector('[data-images]'),
+    titles: this.shadowRoot.querySelector('[data-titles]'),
+    authors: this.shadowRoot.querySelector('[data-authors]')
   };
 
-  constructor() {
-    super();
-    this.attachShadow({ mode: "open" }); // Use "open" mode for Shadow DOM
-    const shadow = this.shadowRoot; // Get the shadow DOM root
-    const { content } = template.cloneNode(true); // Clone the template content
-    shadow.appendChild(content);
-  }
+  // Update the content based on the attributes
+  this.#elements.authors.textContent = this.#author;
+  this.#elements.images.setAttribute('src', this.#image);
+  this.#elements.titles.textContent = this.#title;
+}
 
-  connectedCallback() {
-    this.elements = {
-      images: this.shadowRoot.querySelector('[data-images]'),
-      titles: this.shadowRoot.querySelector('[data-titles]'),
-      authors: this.shadowRoot.querySelector('[data-authors]')
-    };
+// Getter and Setter methods for attributes
+get image() {
+  return this.#image;
+}
 
-    this.elements.authors.innerHTML = this.author;
-    this.elements.images.setAttribute("src", this.image); // Set the image source
-    this.elements.titles.innerHTML = this.title;
+set image(value) {
+  this.#image = value;
+  if (this.elements.images) {
+    this.elements.images.setAttribute('src', value);
   }
 }
 
-customElements.define('preview-book', PreviewBook);
+get title() {
+  return this.#title;
+}
+
+set title(value) {
+  this.#title = value;
+  if (this.elements.titles) {
+    this.elements.titles.textContent = value;
+  }
+}
+
+get author() {
+  return this.#author;
+}
+
+set author(value) {
+  this.#author = value;
+  if (this.elements.authors) {
+    this.elements.authors.textContent = value;
+  }
+}
+}
+
+
