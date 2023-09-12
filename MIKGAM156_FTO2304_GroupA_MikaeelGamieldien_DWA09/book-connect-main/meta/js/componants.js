@@ -60,12 +60,12 @@ template.innerHTML = /*html*/ `
   </style>
   
   <button class="preview">
-    <img class="image" data-images src="{image}"/>
-    <div class="info">
-      <h3 class="title" data-titles></h3>
-      <div class="author" data-authors></div>
-    </div>
-  </button>
+  <img class="image" src="${this.#image}" />
+  <div class="info">
+    <h3 class="title">${this.#title}</h3>
+    <div class="author">${this.#author}</div>
+  </div>
+</button>
 `;
 
 class PreviewBook extends HTMLElement {
