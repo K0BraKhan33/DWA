@@ -16,8 +16,9 @@ const startingFragment = document.createDocumentFragment();
 
 // Loop through the first page of matches and create book elements
 for (const book of matches.slice(0, BOOKS_PER_PAGE)) {
-    const bookElement = bookFactory.createBookElement(book);
-    startingFragment.appendChild(bookElement);
+    const booker = bookFactory.createBookElement(book);
+    startingFragment.appendChild(booker);
+    document.querySelector('[data-list-items]').appendChild(booker);
 }
 
 // Append the   startingFragment to the appropriate element in your HTML

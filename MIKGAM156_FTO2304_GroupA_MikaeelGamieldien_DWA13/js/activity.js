@@ -1,6 +1,9 @@
+
+//givem part 1
 const provinces = ['Western Cape', 'Gauteng', 'Northern Cape', 'Eastern Cape', 'KwaZulu-Natal', 'Free State'];
 const names = ['Ashwin', 'Sibongile', 'Jan-Hendrik', 'Sifso', 'Shailen', 'Frikkie'];
 
+//given part 2
 const products = [
   { product: 'banana', price: "2" },
   { product: 'mango', price: 6 },

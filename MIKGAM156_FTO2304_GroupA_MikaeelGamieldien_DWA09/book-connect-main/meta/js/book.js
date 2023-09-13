@@ -1,8 +1,8 @@
 // book.js
 
-// Import the preBook custom element and authors data
+// Import the necessary modules and data
 import { authors } from './data.js';
-import './componants.js'
+import { templates, PreviewBook } from './components.js';
 
 class BookFactory {
   constructor() {
@@ -14,21 +14,21 @@ class BookFactory {
     const bookElement = document.createElement('button');
     bookElement.classList.add('preview');
     bookElement.setAttribute('data-preview', id);
-  
-    // Create a new instance of the preBook custom element
-    const preBookElement = document.createElement('pre-book');
-  
-    // Set the attributes of the preBook custom element
-    preBookElement.setAttribute('image', image);
-    preBookElement.setAttribute('title', title);
-    preBookElement.setAttribute('author', author);
-  
-    // Append the preBook custom element to the button
+
+    // Create a new instance of the PreviewBook custom element
+    const preBookElement = new PreviewBook();
+
+    // Set the data attributes for the PreviewBook element
+    preBookElement.setAttribute('data-images', image);
+    preBookElement.setAttribute('data-titles', title);
+    preBookElement.setAttribute('data-authors', author);
+
+    // Append the PreviewBook custom element to the button
     bookElement.appendChild(preBookElement);
-  
+
     // Append the button element to the appropriate container in your HTML
     document.querySelector('[data-list-items]').appendChild(bookElement);
-  
+
     return bookElement;
   }
   
