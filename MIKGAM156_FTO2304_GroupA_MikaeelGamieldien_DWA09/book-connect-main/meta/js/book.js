@@ -1,11 +1,11 @@
 // book.js
 
 // Import the necessary modules and data
-import { authors } from './data.js';
-import { templates, PreviewBook } from './components.js';
+//import { authors } from './data.js';
+//import { PreviewBook } from './components.js';
 
 class BookFactory {
-  constructor() {
+  constructor(authors) {
     this.newAuthor = authors;
   }
 
@@ -46,9 +46,9 @@ class BookFactory {
 }
 
 // Create an instance of the BookFactory class
-const bookFactory = new BookFactory();
+//const bookFactory = new BookFactory();
 
 // Export the bookFactory instance
-export { bookFactory };
+export default BookFactory ;
 
 

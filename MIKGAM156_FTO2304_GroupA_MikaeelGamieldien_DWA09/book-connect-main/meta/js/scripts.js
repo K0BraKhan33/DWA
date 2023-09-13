@@ -1,8 +1,9 @@
 //scipts.js
 
 import { books, authors, genres, BOOKS_PER_PAGE, } from './data.js';
-import { bookFactory} from './book.js';
-import  "./componants.js";
+import  BookFactory  from './book.js';
+
+const bookFactory = new BookFactory(authors);
 
 
 

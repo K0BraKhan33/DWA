@@ -1,7 +1,7 @@
 // components.js
 
 // Create a template for the PreviewBook custom element
-export const templates = document.createElement('template');
+const templates = document.createElement('template');
 templates.innerHTML = `
   <style>
     /* CSS styles for the .preview class */
@@ -141,4 +141,4 @@ class PreviewBook extends HTMLElement {
 }
 
 // Export the PreviewBook custom element for use in other modules
-export { PreviewBook };
+export default PreviewBook;
