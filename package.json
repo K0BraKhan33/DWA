@@ -1,0 +1,14 @@
+{
+  "name": "MIKGAM156_FTO2304_GroupA_MikaeelGamieldien_DWA14",
+  "version": "1.0.0",
+  "dependencies": {
+    "lit": "^2.8.0",
+    "yarn": "^1.22.19"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  },
+  "scripts": {
+    "start": "lite-server"
+  }
+}
