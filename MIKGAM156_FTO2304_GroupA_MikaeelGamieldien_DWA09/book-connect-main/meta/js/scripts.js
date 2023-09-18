@@ -6,8 +6,6 @@ import  BookFactory  from './book.js';
 const bookFactory = new BookFactory(authors);
 
 
-
-
 // Initialize page variables
 let page = 1;
 let matches = books;

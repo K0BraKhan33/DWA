@@ -2,7 +2,7 @@
 
 // Import the necessary modules and data
 //import { authors } from './data.js';
-//import { PreviewBook } from './components.js';
+import  './components.js';
 
 class BookFactory {
   constructor(authors) {
