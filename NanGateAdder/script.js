@@ -4,7 +4,7 @@ total input is odd :
 1 0 = 1
 0 1 = 1
 0 0 = 0
-1 1 = 0
+1 1 = 
 */
 export function inOdd(input1, input2) {
 
@@ -44,14 +44,9 @@ export function inAnd(input1, input2) {
 
 
 
-
-
-
-
-
-
 export function display(shower) {
     console.log(shower)
 }
 
 display(inAnd(0, 1))
+display(inOdd(0, 1))

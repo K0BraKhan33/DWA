@@ -10,6 +10,7 @@ const finBinaryArray = [0, 0, 0, 0, 0]; // Initialize fin with all zeros
 
 // Module 1
 // 1 1
+
 midBinaryArray[2] = inOdd(priBinaryArray[3], secBinaryArray[3]);
 
 // Between calcl
@@ -20,6 +21,11 @@ midBinaryArray[3] = inAnd(priBinaryArray[3], secBinaryArray[3]);
 midBinaryArray[1] = inAnd(priBinaryArray[3], secBinaryArray[3]);
 midBinaryArray[0] = inOdd(midBinaryArray[2], carBinaryArray[3]);
 carBinaryArray[3] = inOdd(midBinaryArray[1], midBinaryArray[0]);
+
+
+
+
+
 
 // 2 2
 // Carry, pri
@@ -33,6 +39,9 @@ midBinaryArray[3] = inAnd(priBinaryArray[2], secBinaryArray[2]);
 midBinaryArray[1] = inAnd(priBinaryArray[2], secBinaryArray[2]);
 midBinaryArray[0] = inOdd(midBinaryArray[2], carBinaryArray[3]);
 carBinaryArray[3] = inOdd(midBinaryArray[1], midBinaryArray[0]);
+
+
+
 
 // 3 4
 midBinaryArray[2] = inOdd(priBinaryArray[1], secBinaryArray[1]);
