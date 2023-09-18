@@ -1,7 +1,7 @@
 //tally-app.js
 
 
-import { LitElement, html,css } from '../../node_modules/lit-element/lit-element.js';
+import { LitElement, html, css } from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
 
 
 import './tally-counter.js';

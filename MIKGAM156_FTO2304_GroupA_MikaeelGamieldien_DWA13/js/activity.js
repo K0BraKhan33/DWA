@@ -44,7 +44,7 @@ function runPart1to7() {
   console.warn('part 7');
   const containsS = names.map(name => name.includes('S'));
   const provinceObject = names.reduce((result, name, index) => {
-    result[name] = containsS[index] ? provinces[index] : '';
+    result[name] = provinces[index];
     return result;
   }, {});
   console.log(provinceObject);
@@ -52,6 +52,13 @@ function runPart1to7() {
 
 // Call the function to run Part 1 to 7
 runPart1to7();
+
+
+
+
+
+
+
 
 // Define a function to run Additional Part 1 to 6
 function runAdditionalParts() {
@@ -110,12 +117,6 @@ function runAdditionalParts() {
     return updatedProduct;
   });
   console.log(recreatedObject);
-
-
-  
-
-  
-  
 }
 
 // Call the function to run Additional Part 1 to 6
